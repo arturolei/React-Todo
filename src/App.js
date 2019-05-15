@@ -11,30 +11,35 @@ class App extends React.Component {
     this.state = {
       todosList:[],
       input: "",
-      completed: false
     }
   }
 
   changeHandler = event => {
-    this.setState({[event.target.name]: event.target.value })
+    this.setState({[event.target.name]: event.target.value }, function() {
+      console.log('curren tstate is')
+      console.log(this.state.input)
+    })
   }
 
   addToDo = event => {
+    event.preventDefault();
     let newToDo = {
       task: this.state.input,
       id: Date.now(),
       completed:false
     }
     this.setState({todosList: [...this.state.todosList, newToDo]})
-  
+    console.log(this.state.todosList);
+
   }
+
   render() {
     return (
       <div className="main-container">
         <h2>Welcome to your Todo App!</h2>
         <div className="todo-body">
-          <TodoList  todosList ={this.state.todosList} />
-          <TodoForm addTodo = {this.addToDo} changeHandler = {this.changeHandler} input={this.state.input}/>
+          <TodoList todosList = {this.state.todosList} />
+          <TodoForm addToDo = {this.addToDo} changeHandler ={this.changeHandler}/>
 
         </div>
         

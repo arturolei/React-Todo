@@ -10,7 +10,9 @@ const TodoList = props => {
         <div className="todo-list-body">
             {
                 props.todosList.map(todoItem => <Todo todoText={todoItem.task}/>)
+               
             }
+            
         </div>  
     )
 }
