@@ -1,0 +1,20 @@
+.completed{
+    text-decoration: line-through;
+    color:darkred;
+}
+
+.todo-item{
+    text-align:center;
+    padding: 2%;
+    color:black;
+    border:1px solid pink;
+}
+
+.main-container{
+    max-width:70%;
+    margin: 1% auto;
+}
+
+.todo-body{
+   
+}

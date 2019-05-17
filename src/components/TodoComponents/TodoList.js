@@ -9,7 +9,11 @@ const TodoList = props => {
     return (
         <div className="todo-list-body">
             {
-                props.todosList.map(todoItem => <Todo todoText={todoItem.task}/>)
+                props.todosList.map(todoItem => <Todo 
+                    todoText={todoItem.task} 
+                    taskId={todoItem.id} 
+                    markCompleted={props.markCompleted} />
+                )
                
             }
             
