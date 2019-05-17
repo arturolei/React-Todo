@@ -1,13 +1,16 @@
-.completed{
-    text-decoration: line-through;
-    color:darkred;
-}
 
 .todo-item{
     text-align:center;
     padding: 2%;
     color:black;
     border:1px solid pink;
+}
+
+.completed{
+    text-decoration: line-through;
+    color:darkred;
+    font-size: 1.6rem;
+    background-color: darkblue;
 }
 
 .main-container{

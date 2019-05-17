@@ -12,9 +12,9 @@ const TodoList = props => {
                 props.todosList.map(todoItem => <Todo 
                     todoText={todoItem.task} 
                     taskId={todoItem.id} 
+                    taskCompleted={todoItem.completed}
                     markCompleted={props.markCompleted} />
-                )
-               
+                )  
             }
             
         </div>  

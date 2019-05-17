@@ -13,8 +13,8 @@ const TodoForm = props => {
                 value={props.input}
                 onChange= {props.changeHandler}
                 />
-                <button onClick={props.addToDo}>Add Task</button>
-                <button onClick={props.clearClompleted}>Clear Completed</button>
+                <button onClick={props.addToDo} disabled = {props.inputState.length === 0 ? true :false}>Add Task</button>
+                <button onClick={props.clearCompleted}>Clear Completed</button>
             </form>
         </div>
     )

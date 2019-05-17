@@ -16,10 +16,7 @@ class App extends React.Component {
   }
 
   changeHandler = event => {
-    this.setState({[event.target.name]: event.target.value }, function() {
-      console.log('curren tstate is')
-      console.log(this.state.input)
-    })
+    this.setState({[event.target.name]: event.target.value })
   }
 
   addToDo = event => {
@@ -29,28 +26,24 @@ class App extends React.Component {
       id: Date.now(),
       completed:false
     }
-    this.setState({todosList: [...this.state.todosList, newToDo]})
-    console.log(this.state.todosList);
+    this.setState({todosList: [...this.state.todosList, newToDo], input:""})
+   
 
   }
 
   clearCompleted = (event) =>{
     event.preventDefault();
-    this.setState({todoList: this.state.todosList.filter(item => item.completed === false)});
+    this.setState({todosList: this.state.todosList.filter(item => !item.completed)});
   };
 
   markCompleted = (event, id) => {
-    event.target.classList.toggle('completed');
     this.setState({
       todosList: this.state.todosList.map(item => {
-        if (item.id ===id){
-          return {
-            ...item,
-            completed: true ? false: true 
-          }
-        } else {
-          return item;
+        if (item.id === id){
+          item.completed = !item.completed;
+          
         }
+        return item;
       })
     })
   };
@@ -60,8 +53,8 @@ class App extends React.Component {
       <div className="main-container">
         <h2>Welcome to your Todo App!</h2>
         <div className="todo-body">
-          <TodoList todosList = {this.state.todosList} />
-          <TodoForm addToDo = {this.addToDo} changeHandler ={this.changeHandler}/>
+          <TodoList todosList = {this.state.todosList} markCompleted ={this.markCompleted} />
+          <TodoForm addToDo = {this.addToDo} changeHandler ={this.changeHandler} inputState ={this.state.input} clearCompleted = {this.clearCompleted}/>
         </div>
         
 
@@ -71,3 +64,12 @@ class App extends React.Component {
 }
 
 export default App;
+
+/*{
+          return {
+            ...item,
+            completed: true ? false: true 
+          }
+        } else {
+          return item;
+        } */
